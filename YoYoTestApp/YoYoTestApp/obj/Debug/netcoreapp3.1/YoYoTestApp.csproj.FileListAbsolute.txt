@@ -18,3 +18,22 @@ F:\Yo Yo Test App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\staticwebasset
 F:\Yo Yo Test App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.dll
 F:\Yo Yo Test App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.pdb
 F:\Yo Yo Test App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.genruntimeconfig.cache
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\appsettings.json
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\YoYoTestApp.exe
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\YoYoTestApp.deps.json
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\YoYoTestApp.runtimeconfig.json
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\YoYoTestApp.runtimeconfig.dev.json
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\YoYoTestApp.dll
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\YoYoTestApp.pdb
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.AssemblyInfoInputs.cache
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.AssemblyInfo.cs
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.csproj.CoreCompileInputs.cache
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.MvcApplicationPartsAssemblyInfo.cache
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.RazorTargetAssemblyInfo.cache
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\staticwebassets\YoYoTestApp.StaticWebAssets.Manifest.cache
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\staticwebassets\YoYoTestApp.StaticWebAssets.xml
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.dll
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.pdb
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.genruntimeconfig.cache
