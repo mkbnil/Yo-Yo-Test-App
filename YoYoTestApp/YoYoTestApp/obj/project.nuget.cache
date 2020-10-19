@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "uBU8oWk8nro17DEMnshrKJlJE03RZcg/tooXJFd76oXzScsUSNtcZU7O5kMIrGIRrzjAP5ouXEoNr2PPUJGHkw==",
+  "dgSpecHash": "SduOAeoKli9en/9s9C5QJpLi1TRacWubs9apYNqFDjpOYf7YLSfQCAICrj+0Pl+slrBzktUdkQWNCnFjEt+I+g==",
   "success": true,
-  "projectFilePath": "E:\\Projects\\YoYoWeb\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\YoYoTestApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "F:\\Yo Yo Test App Repo\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\YoYoTestApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Binil MK\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

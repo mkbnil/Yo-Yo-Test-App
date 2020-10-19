@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace YoYoTestApp.Models
 {
-    public class TestModel
+    public class TestData
     {
         private int _accumulatedShuttleDistance;
         private int _speedlevel;
