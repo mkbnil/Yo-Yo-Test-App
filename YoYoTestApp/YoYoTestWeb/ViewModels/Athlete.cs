@@ -13,14 +13,14 @@ namespace YoYoTestWeb.ViewModels
         private int _shuttle;
         private bool _isWarned = false;
         private bool _isStopped = false;
-        private string _warnText = "Warn";
-
+        private string _warnText = "warn";
         public int Id { get { return _id; } set { _id = value; } }
         public string Name { get { return _name; } set { _name = value; } }
         public int Level { get { return _level; } set { _level = value; } }
         public int Shuttle { get { return _shuttle; } set { _shuttle = value; } }
         public bool IsWarned { get { return _isWarned; } set { _isWarned = value; } }
         public bool IsStopped { get { return _isStopped; } set { _isStopped = value; } }
-        public string WarnText { get { return _warnText; } set { _warnText = value; } }
+        public string WarnText { get { return _warnText;  } set { _warnText = value; } }
+
     }
 }

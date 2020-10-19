@@ -37,3 +37,7 @@ F:\Yo Yo Test App Repo\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcorea
 F:\Yo Yo Test App Repo\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.dll
 F:\Yo Yo Test App Repo\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.pdb
 F:\Yo Yo Test App Repo\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.genruntimeconfig.cache
+F:\Yo Yo Test App Repo\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+F:\Yo Yo Test App Repo\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.csproj.CoreCompileInputs.cache
+F:\Yo Yo Test App Repo\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.MvcApplicationPartsAssemblyInfo.cache
+F:\Yo Yo Test App Repo\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\obj\Debug\netcoreapp3.1\YoYoTestApp.csproj.CopyComplete

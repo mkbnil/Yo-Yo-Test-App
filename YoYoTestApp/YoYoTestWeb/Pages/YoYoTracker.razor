@@ -7,25 +7,23 @@
     double strockDashOffSet = 565.2;
 
 
-    TimeSpan nextShuttle = new TimeSpan(0, 0, 0);
+    double nextShuttle = 0.0f;
+    
     public async Task StartTimer()
     {
-        strockDashOffSet = 565.2;
-        double progress = 0;
-        yoyoService.IsProcessStarted = true;
-        nextShuttle = yoyoService.ShuttleLength;
-        while (nextShuttle != new TimeSpan(0, 0, 0))
+
+        await yoyoService.OnTestStart();
+
+        nextShuttle = yoyoService.ShuttleTimeLeft;
+        while (nextShuttle < 1)
         {
             await Task.Delay(1000);
-            nextShuttle = nextShuttle.Subtract(TimeSpan.FromSeconds(1));
-            progress = progress + 1;
-            HandleProgress(progress);
+            nextShuttle = yoyoService.ShuttleTimeLeft;
+            HandleProgress(yoyoService.ShuttleTimeElapsed);
             StateHasChanged();
         }
-        yoyoService.OneShuttleCompleted(yoyoService.ShuttleLength);
-        StateHasChanged();
-        nextShuttle = yoyoService.ShuttleLength;
-        await StartTimer();
+              
+       
     }
 
 
@@ -69,7 +67,7 @@
                             <text x="50%" y="50%" text-anchor="middle" stroke="#343a40" stroke-width="1px" dy=".3em">
                                 <tspan x="100" dy="-20">Level @yoyoService.Level</tspan>
                                 <tspan x="100" dy="20">Shuttle @yoyoService.Shuttle</tspan>
-                                <tspan x="100" dy="25">@yoyoService.ShuttleSpeed km/h</tspan>
+                                <tspan x="100" dy="25">@yoyoService.Speed km/h</tspan>
                             </text>
                             <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
                             <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" style="stroke-dashoffset: @strockDashOffSet;"></circle>
@@ -94,8 +92,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>@nextShuttle.ToString(@"mm\:ss") S</td>
-                            <td class="athlete-add-border-rl">@yoyoService.TotalTime.ToString(@"mm\:ss") M</td>
+                            <td>@yoyoService.ShuttleTimeLeft S</td>
+                            <td class="athlete-add-border-rl">@yoyoService.TotalTime S</td>
                             <td>@yoyoService.TotalDistance M</td>
                             <td></td>
                         </tr>

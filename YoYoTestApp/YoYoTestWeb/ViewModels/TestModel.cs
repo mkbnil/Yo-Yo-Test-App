@@ -10,8 +10,8 @@ namespace YoYoTestWeb.ViewModels
         private int _accumulatedShuttleDistance;
         private int _speedlevel;
         private int _shuttleNo;
-        private float _speed;
-        private float _levelTime;
+        private double _speed;
+        private double _levelTime;
         private DateTime _commulativeTime;
         private DateTime _startTime;
         private float _approxVo2Max;
@@ -32,13 +32,13 @@ namespace YoYoTestWeb.ViewModels
             set { _shuttleNo = value; }
         }
 
-        public float Speed
+        public double Speed
         {
             get { return _speed; }
             set { _speed = value; }
         }
 
-        public float LevelTime
+        public double LevelTime
         {
             get { return _levelTime; }
             set { _levelTime = value; }
