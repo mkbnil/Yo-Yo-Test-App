@@ -1,0 +1,325 @@
+﻿@page "/"
+@using YoYoTestApp.Shared.Models
+@using Newtonsoft.Json
+
+@inject HttpClient Http
+
+@code {
+
+
+
+    double strockDashOffSet = 565.2;
+
+    double nextShuttle = 0;
+
+    YoYoServiceModel yoyoService = new YoYoServiceModel();
+
+    public async Task StartTimer()
+    {
+        strockDashOffSet = 565.2;
+        double progress = 0;
+        yoyoService.IsProcessStarted = true;
+
+        foreach (TestModel testdata in yoyoService.Tests)
+        {
+            var shuttleno = 0;
+            nextShuttle = Math.Round(testdata.LevelTime);
+            while (shuttleno < testdata.ShuttleNo)
+            {
+                progress = 0;
+                nextShuttle = Math.Round(testdata.LevelTime);
+                var multipleFactor = 100 / nextShuttle;
+
+                yoyoService.Level = testdata.Speedlevel;
+                yoyoService.Shuttle = shuttleno;
+                yoyoService.ShuttleSpeed = testdata.Speed;
+                yoyoService.ShuttleTimeElapsed = 0;
+                yoyoService.ShuttleTimeLeft = testdata.LevelTime;
+                var actalDdistance = testdata.AccumulatedShuttleDistance / testdata.Speed;
+
+                while (nextShuttle > 0)
+                {
+                    await Task.Delay(1000);
+                    nextShuttle -= 1;
+                    progress = progress + 1;
+                    UpdateCounter(actalDdistance);
+                    HandleProgress(progress * multipleFactor);
+                    StateHasChanged();
+                }
+                UpdateAthleteInfo();
+                shuttleno++;
+                StateHasChanged();
+            }
+
+            StateHasChanged();
+
+        }
+    }
+
+
+    public void HandleProgress(double val)
+    {
+        var r = 90;
+        var c = Math.PI * (r * 2);
+
+        if (val < 0)
+        {
+            val = 0;
+        }
+        if (val > 100)
+        {
+            val = 100;
+        }
+
+        var pct = ((100 - val) / 100) * c;
+        strockDashOffSet = pct;
+    }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        yoyoService.Athletes = await GetAthletes().ConfigureAwait(false);
+        yoyoService.Tests = await GetTests().ConfigureAwait(false);
+        yoyoService.IsProcessStarted = false;
+        yoyoService.IsStarted = false;
+
+
+    }
+
+    public async Task<List<Athlete>> GetAthletes()
+    {
+        var _athletes = await Http.GetFromJsonAsync<List<Athlete>>("YoYoTest/GetAthletes");
+        return _athletes;
+    }
+
+    public async Task<List<TestModel>> GetTests()
+    {
+        var _tests = await Http.GetFromJsonAsync<List<TestModel>>("YoYoTest/GetAthletes");
+        return _tests;
+    }
+
+    public async Task Warn(Athlete athlete)
+    {
+        if (!athlete.IsWarned)
+        {
+            athlete.IsWarned = true;
+            athlete.WarnText = "Warned";
+
+        }
+        else
+        {
+            athlete.IsStopped = true;
+        }
+        var content = JsonConvert.SerializeObject(athlete.Id);
+        await Http.PostAsJsonAsync($"YoYoTest/Warn",content).ConfigureAwait(false);
+    }
+
+    public async Task Stop(Athlete athlete)
+    {
+        athlete.IsStopped = true;
+        var content = JsonConvert.SerializeObject(athlete.Id);
+        await Http.PostAsJsonAsync($"YoYoTest/Stop", content).ConfigureAwait(false);
+    }
+
+    public async Task UpdateCounter(double actualdistance)
+    {
+        var content = JsonConvert.SerializeObject(actualdistance);
+        await Http.PostAsJsonAsync($"YoYoTest/Stop",content).ConfigureAwait(false);
+    }
+
+    public async Task UpdateAthleteInfo()
+    {
+        await Http.GetAsync($"YoYoTest/UpdateAthleteInfo").ConfigureAwait(false);
+    }
+
+    public async Task OnEditButtonClick(int id, int level, int shuttle)
+    {
+
+        var data = new  { id = id, level = level, shuttle = shuttle };
+        var content = JsonConvert.SerializeObject(data);
+        await Http.PostAsJsonAsync($"YoYoTest/Edit", content).ConfigureAwait(false);
+    }
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row d-sm-block text-center">
+                <h4>YoYo Test</h4>
+            </div>
+            <div class="row">
+                    @if (!yoyoService.IsProcessStarted)
+                    {
+                        <div class="athlete-div-play-continer" @onclick="(e=> StartTimer())">
+                            <img src="/images/play-button.png" class="athlete-img-play" />
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div id="cont">
+                            <svg id="svg" width="200" height="200" viewPort="0 0 100 100">
+                                <text x="50%" y="50%" text-anchor="middle" stroke="#343a40" stroke-width="1px" dy=".3em">
+                                    <tspan x="100" dy="-20">Level @yoyoService.Level</tspan>
+                                    <tspan x="100" dy="20">Shuttle @yoyoService.Shuttle</tspan>
+                                    <tspan x="100" dy="25">@yoyoService.ShuttleSpeed km/h</tspan>
+                                </text>
+                                <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                                <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" style="stroke-dashoffset: @strockDashOffSet;"></circle>
+                            </svg>
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <table class="table athlete-table-with-header">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <label>Next Shuttle</label>
+                                </td>
+                                <td>
+                                    <label>Total Time</label>
+                                </td>
+                                <td>
+                                    <label>Total Distance</label>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@nextShuttle S</td>
+                                <td class="athlete-add-border-rl">@yoyoService.TotalTime S</td>
+                                <td>@yoyoService.TotalDistance M</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <div class="row">
+            <label>Track</label>
+            <hr />
+            @if (yoyoService.Athletes.Any())
+            {
+                <table class="table">
+                    @foreach (var athlete in yoyoService.Athletes)
+                    {
+                        <tr>
+                            <td><label>@string.Format("{0}. {1}", athlete.Id, athlete.Name)</label></td>
+                            <td>
+                                @if (yoyoService.IsProcessStarted && !athlete.IsStopped)
+                                {
+                                    <label class="yoyo-warn" @onclick="@(e => Warn(athlete))">@athlete.WarnText</label>
+                                    <label class="yoyo-danger" @onclick="@(e => Stop(athlete))">Stop</label>
+                                }
+                                else if (yoyoService.IsProcessStarted && athlete.IsStopped)
+                                {
+                                    <label>@athlete.Level/@athlete.Shuttle</label>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+</div>
+
+
+
+
+
+
+
+
+<style>
+    label.yoyo-warn {
+        background-color: gray;
+        color: white;
+        padding: 0px 10px;
+        border-radius: 28%;
+        outline: none;
+        border: none;
+    }
+
+    label.yoyo-danger {
+        background-color: red;
+        color: white;
+        padding: 0px 10px;
+        border-radius: 28%;
+        outline: none;
+        border: none;
+    }
+
+    div.athlete-div-margin {
+        border-right: 1px solid gray;
+        border-left: 1px solid gray;
+        margin-bottom: 7px;
+    }
+
+    div.athletee-entry {
+        border-bottom: 1px solid #a0a0a0;
+        margin: 5px;
+    }
+
+    .athlete-div-play-continer {
+        margin: auto;
+    }
+
+    .athlete-img-play {
+        width: 180px;
+    }
+
+    .athlete-table-with-header {
+        text-align: center;
+        border: none;
+    }
+
+        .athlete-table-with-header td {
+            border-top: none !important;
+            border-collapse: collapse;
+        }
+
+    .athlete-add-border-rl {
+        border-right: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+    }
+
+    #svg circle {
+        stroke-dashoffset: 0;
+        transition: stroke-dashoffset 1s linear;
+        stroke: #666;
+        stroke-width: 1em;
+    }
+
+    #svg #bar {
+        stroke: #b75819;
+    }
+
+    #cont {
+        display: block;
+        height: 200px;
+        width: 200px;
+        margin: 2em auto;
+        /*box-shadow: 0 0 1em black;*/
+        border-radius: 100%;
+        position: relative;
+    }
+
+        #cont:after {
+            position: absolute;
+            display: block;
+            height: 160px;
+            width: 160px;
+            left: 50%;
+            top: 50%;
+            /*box-shadow: inset 0 0 1em black;*/
+            margin-top: -80px;
+            margin-left: -80px;
+            border-radius: 100%;
+            line-height: 160px;
+            font-size: 2em;
+            /*text-shadow: 0 0 0.5em black;*/
+        }
+</style>

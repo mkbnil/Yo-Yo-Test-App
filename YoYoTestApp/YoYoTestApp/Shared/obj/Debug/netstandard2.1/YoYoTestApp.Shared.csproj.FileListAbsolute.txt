@@ -1,0 +1,9 @@
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\bin\Debug\netstandard2.1\YoYoTestApp.Shared.deps.json
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\bin\Debug\netstandard2.1\YoYoTestApp.Shared.dll
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\bin\Debug\netstandard2.1\YoYoTestApp.Shared.pdb
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\obj\Debug\netstandard2.1\YoYoTestApp.Shared.csproj.CoreCompileInputs.cache
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\obj\Debug\netstandard2.1\YoYoTestApp.Shared.AssemblyInfoInputs.cache
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\obj\Debug\netstandard2.1\YoYoTestApp.Shared.AssemblyInfo.cs
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\obj\Debug\netstandard2.1\YoYoTestApp.Shared.dll
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\obj\Debug\netstandard2.1\YoYoTestApp.Shared.pdb
+F:\YoYo\YoYoTestApp\YoYoTestApp\Shared\obj\Debug\netstandard2.1\YoYoTestApp.Shared.csprojAssemblyReference.cache
