@@ -999,19 +999,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Binil MK\\.nuget\\packages\\": {}
+    "C:\\Users\\pr0phet\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\YoYo\\YoYoTestApp\\YoYoTestApp\\Server\\YoYoTestApp.Server.csproj",
+      "projectUniqueName": "E:\\Projects\\YoYoWeb\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\Server\\YoYoTestApp.Server.csproj",
       "projectName": "YoYoTestApp.Server",
-      "projectPath": "F:\\YoYo\\YoYoTestApp\\YoYoTestApp\\Server\\YoYoTestApp.Server.csproj",
-      "packagesPath": "C:\\Users\\Binil MK\\.nuget\\packages\\",
-      "outputPath": "F:\\YoYo\\YoYoTestApp\\YoYoTestApp\\Server\\obj\\",
+      "projectPath": "E:\\Projects\\YoYoWeb\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\Server\\YoYoTestApp.Server.csproj",
+      "packagesPath": "C:\\Users\\pr0phet\\.nuget\\packages\\",
+      "outputPath": "E:\\Projects\\YoYoWeb\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\Server\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Binil MK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pr0phet\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1019,16 +1023,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/TaasAcademy/_packaging/TaaSAcademy/nuget/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\YoYo\\YoYoTestApp\\YoYoTestApp\\Client\\YoYoTestApp.Client.csproj": {
-              "projectPath": "F:\\YoYo\\YoYoTestApp\\YoYoTestApp\\Client\\YoYoTestApp.Client.csproj"
+            "E:\\Projects\\YoYoWeb\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\Client\\YoYoTestApp.Client.csproj": {
+              "projectPath": "E:\\Projects\\YoYoWeb\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\Client\\YoYoTestApp.Client.csproj"
             },
-            "F:\\YoYo\\YoYoTestApp\\YoYoTestApp\\Shared\\YoYoTestApp.Shared.csproj": {
-              "projectPath": "F:\\YoYo\\YoYoTestApp\\YoYoTestApp\\Shared\\YoYoTestApp.Shared.csproj"
+            "E:\\Projects\\YoYoWeb\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\Shared\\YoYoTestApp.Shared.csproj": {
+              "projectPath": "E:\\Projects\\YoYoWeb\\Yo-Yo-Test-App\\YoYoTestApp\\YoYoTestApp\\Shared\\YoYoTestApp.Shared.csproj"
             }
           }
         }
@@ -1069,7 +1074,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

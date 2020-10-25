@@ -13,11 +13,11 @@ namespace YoYoTestApp.Server.Controllers
     [ApiController]
     [Route("[controller]")]
     public class YoYoTestController : ControllerBase
-    { 
+    {
         private readonly ILogger<YoYoTestController> logger;
-        private IYoYoService _yoyoservice;
+        private readonly IYoYoService _yoyoservice;
 
-        public YoYoTestController(ILogger<YoYoTestController> logger,IYoYoService yoyoService)
+        public YoYoTestController(ILogger<YoYoTestController> logger, IYoYoService yoyoService)
         {
             this.logger = logger;
             this._yoyoservice = yoyoService;
@@ -40,17 +40,28 @@ namespace YoYoTestApp.Server.Controllers
         }
 
         [HttpPost("Warn")]
-        public IActionResult Warn([FromBody] dynamic Id)
+        public IActionResult Warn([FromBody] string Id)
         {
-            _yoyoservice.Warn(Id);
-            return Ok();
+            int intId;
+            if (Id.StringToDoubleThenInt(out intId))
+            {
+
+                _yoyoservice.Warn(intId);
+                return Ok();
+            }
+            throw new Exception("Invalid request");
         }
 
         [HttpPost("Stop")]
-        public IActionResult Stop([FromBody] dynamic Id)
+        public IActionResult Stop([FromBody] string Id)
         {
-            _yoyoservice.Stop(Id);
-            return Ok();
+            int intId;
+            if (Id.StringToDoubleThenInt(out intId))
+            {
+                _yoyoservice.Stop(intId);
+                return Ok();
+            }
+            throw new Exception("Invalid request");
         }
 
         [HttpPost("Updatecounter")]
@@ -60,7 +71,7 @@ namespace YoYoTestApp.Server.Controllers
             return Ok();
         }
 
-        [HttpPost("UpdateAthleteInfo")]
+        [HttpGet("UpdateAthleteInfo")]
         public IActionResult UpdateAthleteInfo()
         {
             _yoyoservice.UpdateAthleteInfo();
@@ -73,7 +84,7 @@ namespace YoYoTestApp.Server.Controllers
             int id = userdata.id;
             int level = userdata.level;
             int shuttle = userdata.shuttle;
-            _yoyoservice.OnEditButtonClick(id,level,shuttle);
+            _yoyoservice.OnEditButtonClick(id, level, shuttle);
             return Ok();
         }
     }

@@ -1,4 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="F:\YoYo\YoYoTestApp\YoYoTestApp\Client\wwwroot\" />
-  <ContentRoot BasePath="/" Path="F:\YoYo\YoYoTestApp\YoYoTestApp\Client\bin\Debug\netstandard2.1\wwwroot\" />
+  <ContentRoot BasePath="/" Path="E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\wwwroot\" />
+  <ContentRoot BasePath="/" Path="E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\bin\Debug\netstandard2.1\wwwroot\" />
 </StaticWebAssets>

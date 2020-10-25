@@ -24,7 +24,7 @@
         {
             var shuttleno = 0;
             nextShuttle = Math.Round(testdata.LevelTime);
-            while (shuttleno < testdata.ShuttleNo)
+            while (shuttleno < testdata.ShuttleNo && yoyoService.Athletes.All(x => !x.IsStopped))
             {
                 progress = 0;
                 nextShuttle = Math.Round(testdata.LevelTime);
@@ -46,7 +46,7 @@
                     HandleProgress(progress * multipleFactor);
                     StateHasChanged();
                 }
-                UpdateAthleteInfo();
+                UpdateAthleteInfo(testdata, shuttleno);
                 shuttleno++;
                 StateHasChanged();
             }
@@ -95,7 +95,7 @@
 
     public async Task<List<TestModel>> GetTests()
     {
-        var _tests = await Http.GetFromJsonAsync<List<TestModel>>("YoYoTest/GetAthletes");
+        var _tests = await Http.GetFromJsonAsync<List<TestModel>>("YoYoTest/GetTests");
         return _tests;
     }
 
@@ -128,8 +128,13 @@
         await Http.PostAsJsonAsync($"YoYoTest/Stop",content).ConfigureAwait(false);
     }
 
-    public async Task UpdateAthleteInfo()
+    public async Task UpdateAthleteInfo(TestModel testdata, int shuttleNumber)
     {
+        foreach (var athlete in yoyoService.Athletes.Where(x => !x.IsStopped))
+        {
+            athlete.Level = testdata.Speedlevel;
+            athlete.Shuttle = shuttleNumber;
+        }
         await Http.GetAsync($"YoYoTest/UpdateAthleteInfo").ConfigureAwait(false);
     }
 
@@ -201,7 +206,7 @@
     <div class="row">
             <label>Track</label>
             <hr />
-            @if (yoyoService.Athletes.Any())
+            @if (yoyoService?.Athletes?.Any() == true)
             {
                 <table class="table">
                     @foreach (var athlete in yoyoService.Athletes)
