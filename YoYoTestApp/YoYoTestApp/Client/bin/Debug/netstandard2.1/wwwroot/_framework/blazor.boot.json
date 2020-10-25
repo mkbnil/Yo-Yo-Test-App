@@ -6,7 +6,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "YoYoTestApp.Client.dll": "sha256-Jj2XIUEj+j2NJ6TWyfLxEeJerhuooODAqsTFWeoFF3M=",
+      "YoYoTestApp.Client.dll": "sha256-5TQ1ZmW\/2QPNLKm2yEsgS6aU6dVlQULiewH\/PtNXH\/E=",
       "System.Text.Json.dll": "sha256-HQeN+ZfHAERO+uW0fP0J9J3WV1hQ3vUIOWbqGSYBPp8=",
       "System.Runtime.CompilerServices.Unsafe.dll": "sha256-kL\/omZDwqByAi+lPdMeDmr3XjHcn4RVb+LmZ4mut1Yc=",
       "mscorlib.dll": "sha256-BaZPMj95+YNe3G4ckTGD6szZFwZeA2MOHn91zTGKDeU=",
@@ -62,7 +62,7 @@
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-czNf3btAeBW\/vvID5LAfgcsNZ+GM3ssVuPaMflcg0rs="
     },
     "pdb": {
-      "YoYoTestApp.Client.pdb": "sha256-NjQhCjhLjXQTSwJpx3v\/uxsBp1252jskcREzLCFrlKY=",
+      "YoYoTestApp.Client.pdb": "sha256-1FoRb0CM6xsC47ioNSZJDM2gCCHNfljiRa0N2E0pDjU=",
       "YoYoTestApp.Shared.pdb": "sha256-uUcIrnr4ow6HkuVu8Pp8n9VqIFoUWAnDv4umsXo6pHI="
     },
     "runtime": {

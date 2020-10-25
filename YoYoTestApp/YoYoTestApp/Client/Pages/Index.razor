@@ -19,13 +19,13 @@
         strockDashOffSet = 565.2;
         double progress = 0;
         yoyoService.IsProcessStarted = true;
-
         foreach (TestModel testdata in yoyoService.Tests)
         {
             var shuttleno = 0;
             nextShuttle = Math.Round(testdata.LevelTime);
-            while (shuttleno < testdata.ShuttleNo && yoyoService.Athletes.All(x => !x.IsStopped))
+            while (shuttleno < testdata.ShuttleNo && yoyoService.Athletes.Any(x => !x.IsStopped))
             {
+
                 progress = 0;
                 nextShuttle = Math.Round(testdata.LevelTime);
                 var multipleFactor = 100 / nextShuttle;
@@ -39,18 +39,20 @@
 
                 while (nextShuttle > 0)
                 {
-                    await Task.Delay(1000);
-                    nextShuttle -= 1;
-                    progress = progress + 1;
-                    UpdateCounter(actalDdistance);
-                    HandleProgress(progress * multipleFactor);
-                    StateHasChanged();
+                    if (yoyoService.Athletes.Any(x => !x.IsStopped))
+                    {
+                        await Task.Delay(1000);
+                        nextShuttle -= 1;
+                        progress = progress + 1;
+                        UpdateCounter(actalDdistance);
+                        HandleProgress(progress * multipleFactor);
+                        StateHasChanged(); 
+                    }
                 }
                 UpdateAthleteInfo(testdata, shuttleno);
                 shuttleno++;
                 StateHasChanged();
             }
-
             StateHasChanged();
 
         }
@@ -112,7 +114,7 @@
             athlete.IsStopped = true;
         }
         var content = JsonConvert.SerializeObject(athlete.Id);
-        await Http.PostAsJsonAsync($"YoYoTest/Warn",content).ConfigureAwait(false);
+        await Http.PostAsJsonAsync($"YoYoTest/Warn", content).ConfigureAwait(false);
     }
 
     public async Task Stop(Athlete athlete)
@@ -125,7 +127,7 @@
     public async Task UpdateCounter(double actualdistance)
     {
         var content = JsonConvert.SerializeObject(actualdistance);
-        await Http.PostAsJsonAsync($"YoYoTest/Stop",content).ConfigureAwait(false);
+        await Http.PostAsJsonAsync($"YoYoTest/Stop", content).ConfigureAwait(false);
     }
 
     public async Task UpdateAthleteInfo(TestModel testdata, int shuttleNumber)
@@ -141,7 +143,7 @@
     public async Task OnEditButtonClick(int id, int level, int shuttle)
     {
 
-        var data = new  { id = id, level = level, shuttle = shuttle };
+        var data = new { id = id, level = level, shuttle = shuttle };
         var content = JsonConvert.SerializeObject(data);
         await Http.PostAsJsonAsync($"YoYoTest/Edit", content).ConfigureAwait(false);
     }
@@ -154,81 +156,87 @@
                 <h4>YoYo Test</h4>
             </div>
             <div class="row">
-                    @if (!yoyoService.IsProcessStarted)
-                    {
-                        <div class="athlete-div-play-continer" @onclick="(e=> StartTimer())">
-                            <img src="/images/play-button.png" class="athlete-img-play" />
-                        </div>
-                    }
-                    else
-                    {
+                @if (!yoyoService.IsProcessStarted)
+                {
 
-                        <div id="cont">
-                            <svg id="svg" width="200" height="200" viewPort="0 0 100 100">
-                                <text x="50%" y="50%" text-anchor="middle" stroke="#343a40" stroke-width="1px" dy=".3em">
-                                    <tspan x="100" dy="-20">Level @yoyoService.Level</tspan>
-                                    <tspan x="100" dy="20">Shuttle @yoyoService.Shuttle</tspan>
-                                    <tspan x="100" dy="25">@yoyoService.ShuttleSpeed km/h</tspan>
-                                </text>
-                                <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
-                                <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" style="stroke-dashoffset: @strockDashOffSet;"></circle>
+                    <div class="play-btn" @onclick="(e=> StartTimer())">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
+                                <polygon class="play-btn__svg" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69" />
+                                <path class="play-btn__svg" d="M26,13A13,13,0,1,1,13,0,13,13,0,0,1,26,13ZM13,2.18A10.89,10.89,0,1,0,23.84,13.06,10.89,10.89,0,0,0,13,2.18Z" />
                             </svg>
-                        </div>
-                    }
-                </div>
-                <div class="row">
-                    <table class="table athlete-table-with-header">
-                        <thead>
-                            <tr>
-                                <td>
-                                    <label>Next Shuttle</label>
-                                </td>
-                                <td>
-                                    <label>Total Time</label>
-                                </td>
-                                <td>
-                                    <label>Total Distance</label>
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>@nextShuttle S</td>
-                                <td class="athlete-add-border-rl">@yoyoService.TotalTime S</td>
-                                <td>@yoyoService.TotalDistance M</td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                        </a>
+                    </div>
+                }
+                else
+                {
+
+                    <div id="cont">
+                        <svg id="svg" width="200" height="200" viewPort="0 0 100 100">
+                            <text x="50%" y="50%" text-anchor="middle" stroke="#343a40" stroke-width="1px" dy=".3em">
+                                <tspan x="100" dy="-20">Level @yoyoService.Level</tspan>
+                                <tspan x="100" dy="20">Shuttle @yoyoService.Shuttle</tspan>
+                                <tspan x="100" dy="25">@yoyoService.ShuttleSpeed km/h</tspan>
+                            </text>
+                            <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                            <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" style="stroke-dashoffset: @strockDashOffSet;"></circle>
+                        </svg>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <table class="table athlete-table-with-header">
+                    <thead>
+                        <tr>
+                            <td>
+                                <label>Next Shuttle</label>
+                            </td>
+                            <td>
+                                <label>Total Time</label>
+                            </td>
+                            <td>
+                                <label>Total Distance</label>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@nextShuttle S</td>
+                            <td class="athlete-add-border-rl">@yoyoService.TotalTime S</td>
+                            <td>@yoyoService.TotalDistance M</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="row">
-            <label>Track</label>
-            <hr />
-            @if (yoyoService?.Athletes?.Any() == true)
-            {
-                <table class="table">
-                    @foreach (var athlete in yoyoService.Athletes)
-                    {
-                        <tr>
-                            <td><label>@string.Format("{0}. {1}", athlete.Id, athlete.Name)</label></td>
-                            <td>
-                                @if (yoyoService.IsProcessStarted && !athlete.IsStopped)
-                                {
-                                    <label class="yoyo-warn" @onclick="@(e => Warn(athlete))">@athlete.WarnText</label>
-                                    <label class="yoyo-danger" @onclick="@(e => Stop(athlete))">Stop</label>
-                                }
-                                else if (yoyoService.IsProcessStarted && athlete.IsStopped)
-                                {
-                                    <label>@athlete.Level/@athlete.Shuttle</label>
-                                }
-                            </td>
-                        </tr>
-                    }
-                </table>
-            }
-        </div>
+        <label>Track</label>
+        <hr />
+        @if (yoyoService?.Athletes?.Any() == true)
+        {
+            <table class="table">
+                @foreach (var athlete in yoyoService.Athletes)
+                {
+                    <tr>
+                        <td><label>@string.Format("{0}. {1}", athlete.Id, athlete.Name)</label></td>
+                        <td>
+                            @if (yoyoService.IsProcessStarted && !athlete.IsStopped)
+                            {
+                                <label class="yoyo-warn" @onclick="@(e => Warn(athlete))">@athlete.WarnText</label>
+                                <label class="yoyo-danger" @onclick="@(e => Stop(athlete))">Stop</label>
+                            }
+                            else if (yoyoService.IsProcessStarted && athlete.IsStopped)
+                            {
+                                <label>@athlete.Level/@athlete.Shuttle</label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
 </div>
 
 
@@ -268,14 +276,6 @@
         margin: 5px;
     }
 
-    .athlete-div-play-continer {
-        margin: auto;
-    }
-
-    .athlete-img-play {
-        width: 180px;
-    }
-
     .athlete-table-with-header {
         text-align: center;
         border: none;
@@ -296,6 +296,7 @@
         transition: stroke-dashoffset 1s linear;
         stroke: #666;
         stroke-width: 1em;
+        animation-fill-mode: backwards;
     }
 
     #svg #bar {
@@ -327,4 +328,22 @@
             font-size: 2em;
             /*text-shadow: 0 0 0.5em black;*/
         }
+
+    .play-btn {
+        width: 18%;
+        height: auto;
+        margin: 0 auto;
+        margin: 2em auto;
+    }
+
+    .play-btn__svg {
+        transition: 1s;
+        fill: #7c7c7c;
+        opacity: .5;
+    }
+
+    .play-btn:hover .play-btn__svg {
+        fill: #a41d33;
+        opacity: 1;
+    }
 </style>

@@ -738,6 +738,6 @@ E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\nets
 E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\netstandard2.1\YoYoTestApp.Client.dll
 E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\netstandard2.1\YoYoTestApp.Client.pdb
 E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\bin\Debug\netstandard2.1\wwwroot\images\play-button.png
-E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\netstandard2.1\integrity\Jj2XIUEj_j2NJ6TWyfLxEeJerhuooODAqsTFWeoFF3M=.hash
-E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\netstandard2.1\integrity\NjQhCjhLjXQTSwJpx3v-uxsBp1252jskcREzLCFrlKY=.hash
-E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\netstandard2.1\integrity\grGERl8iBEFl5JGdILfIF8FeYzeZAKPPhqbMB3BoBo4=.hash
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\netstandard2.1\integrity\5TQ1ZmW-2QPNLKm2yEsgS6aU6dVlQULiewH-PtNXH-E=.hash
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\netstandard2.1\integrity\1FoRb0CM6xsC47ioNSZJDM2gCCHNfljiRa0N2E0pDjU=.hash
+E:\Projects\YoYoWeb\Yo-Yo-Test-App\YoYoTestApp\YoYoTestApp\Client\obj\Debug\netstandard2.1\integrity\fddAq0OQEGIzIs-bXqtvlDKEqaoz87HUFyx7if2Yfbc=.hash
